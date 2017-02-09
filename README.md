@@ -17,7 +17,7 @@ Themeable datetime picker for input elements using the [dpicker library](https:/
 
 Install this package with sackmesser:
 
-    make feature-install datetime-picker
+    make feature-install-datetime-picker
 
 or when sackmesser is not used:
 
