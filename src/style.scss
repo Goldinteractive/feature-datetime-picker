@@ -1,0 +1,143 @@
+$text-color: #333 !default;
+$font-size-small: 80% !default;
+$error-color: red !default;
+
+// module variables
+$ft-dpicker-table-color: $text-color !default;
+$ft-dpicker-table-color-inactive: lighten($ft-dpicker-table-color, 50%) !default;
+$ft-dpicker-table-color-inactive: lighten($ft-dpicker-table-color, 50%) !default;
+$ft-dpicker-table-font-size-inactive: $font-size-small !default;
+
+$ft-dpicker-table-cell-button-background-color: #f0f0f0 !default;
+$ft-dpicker-table-cell-button-background-color-active: darken($ft-dpicker-table-cell-button-background-color, 20%) !default;
+$ft-dpicker-table-cell-button-background-color-hover: darken($ft-dpicker-table-cell-button-background-color, 10%) !default;
+
+$ft-dpicker-table-cell-height: 38px !default;
+$ft-dpicker-table-cell-border: none !default;
+$ft-dpicker-table-cell-padding: 2px !default;
+$ft-dpicker-table-title-cell-padding: $ft-dpicker-table-cell-padding $ft-dpicker-table-cell-padding 3px !default;
+
+$ft-dpicker-container-width: 300px !default;
+$ft-dpicker-container-padding: 15px !default;
+$ft-dpicker-container-border: 1px solid #f8f8f8 !default;
+$ft-dpicker-container-background-color: #fff !default;
+$ft-dpicker-container-z-index: 10 !default;
+$ft-dpicker-container-box-shadow: 0 0 2px 1px rgba(0,0,0,0.2) !default;
+$ft-dpicker-container-transition: all .1s ease-in !default;
+
+$ft-dpicker-modules-margin-bottom: 10px !default;
+
+$ft-dpicker-select-horizontal-spacing: $ft-dpicker-modules-margin-bottom !default;
+$ft-dpicker-select-padding: 8px 30px 8px 8px !default;
+$ft-dpicker-select-arrow-border-width: 4px !default;
+$ft-dpicker-select-arrow-right: 12px !default;
+
+
+.ft-dpicker {
+    position: relative;
+
+    > .dpicker > input {
+        &.dpicker-invalid {
+            border-color: $error-color;
+        }
+    }
+
+    > .dpicker > .dpicker-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+
+        left: 0;
+        position: absolute;
+        width: $ft-dpicker-container-width;
+        padding: $ft-dpicker-container-padding;
+        background-color: $ft-dpicker-container-background-color;
+        border: $ft-dpicker-container-border;
+        z-index: $ft-dpicker-container-z-index;
+        box-shadow: $ft-dpicker-container-box-shadow;
+        transition: $ft-dpicker-container-transition;
+
+        &.dpicker-invisible {
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        &.dpicker-visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .select {
+            &::after {
+                right: $ft-dpicker-select-arrow-right;
+                border-width: $ft-dpicker-select-arrow-border-width $ft-dpicker-select-arrow-border-width 0;
+            }
+        }
+
+        .select > select {
+            padding: $ft-dpicker-select-padding;
+        }
+
+        > * {
+            flex-basis: calc(50% - #{$ft-dpicker-select-horizontal-spacing / 2});
+            margin-bottom: $ft-dpicker-modules-margin-bottom;
+        }
+
+        > .dpicker-time {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+
+            > .select {
+                flex-basis: calc(50% - #{$ft-dpicker-select-horizontal-spacing / 2});
+            }
+        }
+
+        > table {
+            flex-basis: 100%;
+            width: 100%;
+            margin: 0;
+            margin-top: $ft-dpicker-container-padding - $ft-dpicker-modules-margin-bottom;
+            color: $ft-dpicker-table-color;
+            text-align: center;
+            border-collapse: collapse;
+            table-layout: fixed;
+
+            th {
+                padding: $ft-dpicker-table-title-cell-padding;
+            }
+
+            td {
+                text-align: right;
+                padding: $ft-dpicker-table-cell-padding;
+                height: $ft-dpicker-table-cell-height;
+                border: $ft-dpicker-table-cell-border;
+
+                &.dpicker-inactive {
+                    padding-right: 3px;
+                    font-size: $ft-dpicker-table-font-size-inactive;
+                    color: $ft-dpicker-table-color-inactive;
+                }
+
+                &.dpicker-active button {
+                    margin: 0;
+                    padding: 0;
+                    border: 0;
+                    color: inherit;
+                    width: 100%;
+                    height: 100%;
+                    background-color: $ft-dpicker-table-cell-button-background-color;
+                    transition: background-color .1s ease-in;
+
+                    &:hover {
+                        background-color: $ft-dpicker-table-cell-button-background-color-hover;
+                    }
+
+                    &.dpicker-active {
+                        background-color: $ft-dpicker-table-cell-button-background-color-active;
+                    }
+                }
+            }
+        }
+    }
+}
