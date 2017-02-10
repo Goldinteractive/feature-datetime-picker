@@ -27,8 +27,8 @@ const DATA_KEY_MDL_TEXTFIELD = 'materialTextfieldInstance'
  * Wrap given select(s) with div container.
  * @private
  *
- * @param {Element} $rendered - Rendered selects
- * @return {Element} Rendered selects wrapped in a div container.
+ * @param   {Element} $rendered - Rendered selects
+ * @returns {Element} Rendered selects wrapped in a div container.
  */
 var addSelectWrapper = function($rendered) {
   var $output,
